@@ -34,6 +34,14 @@ const MOCK_IDEAS: Idea[] = [
     committedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 30 * 6).toISOString() // 6 months ago
   },
   {
+    id: "prodjoy",
+    title: "Prodjoy",
+    description: "Fractional holdco - Fractional AI, Growth, & Website builder",
+    status: "committed",
+    link: "https://www.prodjoy.com",
+    committedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 365 * 2).toISOString() // 2 years ago
+  },
+  {
     id: "2",
     title: "Commitment Canvas",
     description: "This website you are on!",
@@ -104,6 +112,12 @@ const MOCK_IDEAS: Idea[] = [
     id: "13",
     title: "Pastor Tools",
     description: "Bringing AI to churches to operate and reach their congregation more efficiently",
+    status: "considering"
+  },
+  {
+    id: "14",
+    title: "Waitlist Tool",
+    description: "A simple way for startups to track product effectiveness pre-release by collecting and managing waitlist emails",
     status: "considering"
   }
 ];
