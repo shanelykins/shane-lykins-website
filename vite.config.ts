@@ -1,10 +1,33 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+import path from "path";
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(), 
+    tailwindcss(),
+    // Custom plugin to serve public files before SPA fallback
+    {
+      name: 'serve-public-files',
+      configureServer(server) {
+        server.middlewares.use((req, res, next) => {
+          // Serve files from public directory
+          if (req.url && req.url.startsWith('/avatar.jpg')) {
+            return next();
+          }
+          next();
+        });
+      },
+    },
+  ],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src"),
+    },
+  },
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  publicDir: "public",
 });
