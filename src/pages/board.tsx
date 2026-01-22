@@ -125,6 +125,12 @@ const MOCK_IDEAS: Idea[] = [
     title: "Changelog Tool",
     description: "Automatically broadcast to your customers each time you ship",
     status: "considering"
+  },
+  {
+    id: "16",
+    title: "Link Saver",
+    description: "A place to store all your links of things you found online. Auto categorized",
+    status: "considering"
   }
 ];
 
