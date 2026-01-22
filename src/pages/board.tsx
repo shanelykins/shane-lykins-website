@@ -119,6 +119,12 @@ const MOCK_IDEAS: Idea[] = [
     title: "Waitlist Tool",
     description: "A simple way for startups to track product effectiveness pre-release by collecting and managing waitlist emails",
     status: "considering"
+  },
+  {
+    id: "15",
+    title: "Changelog Tool",
+    description: "Automatically broadcast to your customers each time you ship",
+    status: "considering"
   }
 ];
 
