@@ -34,15 +34,7 @@ export default function AgentCard({ agent, isSimulating }: AgentCardProps) {
 
   return (
     <Link href={`/agents/${agent.id}`}>
-      <div className={`border rounded-lg p-4 hover:shadow-md transition-all cursor-pointer bg-white relative ${isSimulating && isActive ? 'ring-2 ring-blue-200' : ''}`}>
-        {/* AI Badge */}
-        <div className="absolute -top-2 -right-2 bg-gray-900 text-white text-[10px] font-medium px-1.5 py-0.5 rounded flex items-center gap-1">
-          <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2a2 2 0 012 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 017 7h1a1 1 0 011 1v3a1 1 0 01-1 1h-1v1a2 2 0 01-2 2H5a2 2 0 01-2-2v-1H2a1 1 0 01-1-1v-3a1 1 0 011-1h1a7 7 0 017-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 012-2zm-3 9a1 1 0 100 2 1 1 0 000-2zm6 0a1 1 0 100 2 1 1 0 000-2z"/>
-          </svg>
-          AI
-        </div>
-
+      <div className={`border rounded-lg p-4 hover:shadow-md transition-all cursor-pointer bg-white ${isSimulating && isActive ? 'ring-2 ring-blue-200' : ''}`}>
         <div className="flex items-start gap-3 mb-3">
           {/* Avatar with activity indicator */}
           <div className="relative flex-shrink-0">

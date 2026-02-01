@@ -49,11 +49,15 @@ export default function HomePage() {
   useEffect(() => {
     if (!simulating) return
 
-    const interval = setInterval(async () => {
-      // Pick a random active agent
-      const activeAgents = agents.filter(a => a.status === 'active')
+    const runSimulationStep = async () => {
+      // Fetch fresh agent data each time
+      const res = await fetch('/api/agents')
+      const freshAgents: Agent[] = await res.json()
+
+      const activeAgents = freshAgents.filter(a => a.status === 'active')
       if (activeAgents.length === 0) {
         setSimulating(false)
+        setAgents(freshAgents)
         return
       }
 
@@ -75,14 +79,19 @@ export default function HomePage() {
             metadata: JSON.stringify({ simulated: true, tokens: Math.floor(cost * 15000) })
           })
         })
-        await fetchAgents()
+        // Fetch updated data immediately after action
+        const updated = await fetch('/api/agents')
+        const updatedAgents = await updated.json()
+        setAgents(updatedAgents)
       } catch (error) {
         console.error('Simulation action failed:', error)
       }
-    }, simulationSpeed === 'fast' ? 800 : 2000)
+    }
+
+    const interval = setInterval(runSimulationStep, simulationSpeed === 'fast' ? 600 : 1500)
 
     return () => clearInterval(interval)
-  }, [simulating, simulationSpeed, agents, fetchAgents])
+  }, [simulating, simulationSpeed])
 
   const activeCount = agents.filter(a => a.status === 'active').length
   const pausedCount = agents.filter(a => a.status === 'paused').length
