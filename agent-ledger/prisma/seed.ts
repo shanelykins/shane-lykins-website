@@ -2,89 +2,117 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
+const TARGETS = [
+  'openai:gpt-4',
+  'openai:gpt-4-turbo',
+  'anthropic:claude-3',
+  'anthropic:claude-3-opus',
+  'google:gemini-pro',
+  'cohere:command-r',
+  'mistral:large',
+]
+
+const ACTION_TYPES = ['api_call', 'embedding', 'completion', 'chat', 'web_search', 'code_review']
+
+function randomTarget() {
+  return TARGETS[Math.floor(Math.random() * TARGETS.length)]
+}
+
+function randomActionType() {
+  return ACTION_TYPES[Math.floor(Math.random() * ACTION_TYPES.length)]
+}
+
+function randomCost(max: number) {
+  return Math.round(Math.random() * max * 100) / 100
+}
+
+async function createAgentWithActions(
+  name: string,
+  role: string,
+  monthlyBudget: number,
+  perActionLimit: number,
+  status: 'active' | 'paused',
+  actionCount: number,
+  maxActionCost: number
+) {
+  const agent = await prisma.agent.create({
+    data: {
+      name,
+      role,
+      ownerId: 'acme_corp',
+      monthlyBudget,
+      perActionLimit,
+      status
+    }
+  })
+
+  for (let i = 0; i < actionCount; i++) {
+    const cost = randomCost(maxActionCost)
+    await prisma.actionLog.create({
+      data: {
+        agentId: agent.id,
+        actionType: randomActionType(),
+        target: randomTarget(),
+        cost,
+        outcome: Math.random() > 0.1 ? 'success' : 'failure',
+        metadata: JSON.stringify({ tokens: Math.floor(cost * 15000) }),
+        createdAt: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000)
+      }
+    })
+  }
+
+  if (status === 'paused') {
+    await prisma.alert.create({
+      data: {
+        agentId: agent.id,
+        type: 'budget_exceeded',
+        message: `Agent auto-paused: monthly budget of $${monthlyBudget.toFixed(2)} exceeded`
+      }
+    })
+  }
+
+  return agent
+}
+
 async function main() {
   // Clear existing data
   await prisma.actionLog.deleteMany()
   await prisma.alert.deleteMany()
   await prisma.agent.deleteMany()
 
-  // Create Agent 1: Active with moderate usage
-  const agent1 = await prisma.agent.create({
-    data: {
-      name: 'Research Assistant',
-      role: 'Data analysis and report generation',
-      ownerId: 'user_001',
-      monthlyBudget: 50.00,
-      perActionLimit: 2.00,
-      status: 'active'
-    }
-  })
-
-  // Create Agent 2: Paused (budget exceeded)
-  const agent2 = await prisma.agent.create({
-    data: {
-      name: 'Code Generator',
-      role: 'Automated code review and generation',
-      ownerId: 'user_001',
-      monthlyBudget: 25.00,
-      perActionLimit: 5.00,
-      status: 'paused'
-    }
-  })
-
-  // Sample actions for Agent 1
-  const agent1Actions = [
-    { actionType: 'api_call', target: 'openai:gpt-4', cost: 0.15, outcome: 'success', metadata: '{"tokens": 2500}' },
-    { actionType: 'api_call', target: 'openai:gpt-4', cost: 0.08, outcome: 'success', metadata: '{"tokens": 1200}' },
-    { actionType: 'web_search', target: 'tavily:search', cost: 0.01, outcome: 'success', metadata: '{"queries": 3}' },
-    { actionType: 'api_call', target: 'openai:gpt-4-turbo', cost: 0.25, outcome: 'success', metadata: '{"tokens": 4000}' },
-    { actionType: 'file_write', target: 'reports/analysis.md', cost: 0.00, outcome: 'success', metadata: null },
-    { actionType: 'api_call', target: 'anthropic:claude-3', cost: 0.18, outcome: 'failure', metadata: '{"error": "rate_limit"}' },
-    { actionType: 'api_call', target: 'anthropic:claude-3', cost: 0.12, outcome: 'success', metadata: '{"tokens": 1800}' },
+  // Create agents with human-like names and realistic roles
+  const agents = [
+    { name: 'Alex Chen', role: 'Lead Research Analyst', budget: 150, limit: 5, status: 'active' as const, actions: 24, maxCost: 4 },
+    { name: 'Sarah Mitchell', role: 'Customer Support Agent', budget: 75, limit: 2, status: 'active' as const, actions: 45, maxCost: 1.5 },
+    { name: 'Marcus Johnson', role: 'Code Review Specialist', budget: 200, limit: 8, status: 'active' as const, actions: 18, maxCost: 6 },
+    { name: 'Elena Rodriguez', role: 'Content Writer', budget: 50, limit: 2, status: 'active' as const, actions: 32, maxCost: 1.8 },
+    { name: 'James Wright', role: 'Data Pipeline Manager', budget: 300, limit: 10, status: 'active' as const, actions: 12, maxCost: 8 },
+    { name: 'Priya Patel', role: 'QA Testing Agent', budget: 100, limit: 3, status: 'active' as const, actions: 28, maxCost: 2.5 },
+    { name: 'David Kim', role: 'Security Auditor', budget: 125, limit: 4, status: 'active' as const, actions: 15, maxCost: 3.5 },
+    { name: 'Rachel Torres', role: 'Marketing Analyst', budget: 80, limit: 2.5, status: 'active' as const, actions: 38, maxCost: 2 },
+    { name: 'Michael Foster', role: 'DevOps Assistant', budget: 25, limit: 5, status: 'paused' as const, actions: 8, maxCost: 4.5 },
+    { name: 'Lisa Wang', role: 'Financial Reporting', budget: 60, limit: 2, status: 'active' as const, actions: 22, maxCost: 1.8 },
+    { name: 'Chris Anderson', role: 'Sales Intelligence', budget: 90, limit: 3, status: 'active' as const, actions: 35, maxCost: 2.8 },
+    { name: 'Nina Kowalski', role: 'HR Documentation', budget: 40, limit: 1.5, status: 'paused' as const, actions: 42, maxCost: 1.2 },
   ]
 
-  for (const action of agent1Actions) {
-    await prisma.actionLog.create({
-      data: {
-        agentId: agent1.id,
-        ...action,
-        createdAt: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000) // Random time in last 7 days
-      }
-    })
+  console.log('Creating agents...')
+
+  for (const agentData of agents) {
+    const agent = await createAgentWithActions(
+      agentData.name,
+      agentData.role,
+      agentData.budget,
+      agentData.limit,
+      agentData.status,
+      agentData.actions,
+      agentData.maxCost
+    )
+    console.log(`  Created: ${agent.name} (${agentData.status})`)
   }
 
-  // Sample actions for Agent 2 (showing why it got paused)
-  const agent2Actions = [
-    { actionType: 'api_call', target: 'openai:gpt-4', cost: 4.50, outcome: 'success', metadata: '{"tokens": 75000}' },
-    { actionType: 'code_review', target: 'github:pr-123', cost: 3.20, outcome: 'success', metadata: '{"files": 45}' },
-    { actionType: 'api_call', target: 'openai:gpt-4', cost: 4.80, outcome: 'success', metadata: '{"tokens": 80000}' },
-    { actionType: 'code_gen', target: 'project:backend', cost: 4.90, outcome: 'success', metadata: '{"lines": 2500}' },
-    { actionType: 'api_call', target: 'openai:gpt-4', cost: 4.60, outcome: 'success', metadata: '{"tokens": 77000}' },
-    { actionType: 'api_call', target: 'openai:gpt-4', cost: 3.50, outcome: 'success', metadata: '{"tokens": 58000}' },
-  ]
-
-  for (const action of agent2Actions) {
-    await prisma.actionLog.create({
-      data: {
-        agentId: agent2.id,
-        ...action,
-        createdAt: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000)
-      }
-    })
-  }
-
-  // Create alert for Agent 2
-  await prisma.alert.create({
-    data: {
-      agentId: agent2.id,
-      type: 'budget_exceeded',
-      message: 'Agent auto-paused: monthly budget of $25.00 exceeded (total spend: $25.50)'
-    }
-  })
-
-  console.log('Seed data created successfully!')
-  console.log(`Agent 1 (${agent1.name}): ${agent1.id}`)
-  console.log(`Agent 2 (${agent2.name}): ${agent2.id}`)
+  console.log('\nSeed data created successfully!')
+  console.log(`Total agents: ${agents.length}`)
 }
 
 main()
