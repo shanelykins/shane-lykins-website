@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Agent {
+  id             String      @id @default(cuid())
+  name           String
+  role           String
+  ownerId        String
+  monthlyBudget  Float
+  perActionLimit Float
+  status         String      @default("active")
+  createdAt      DateTime    @default(now())
+  actions        ActionLog[]
+  alerts         Alert[]
+}
+
+model ActionLog {
+  id         String   @id @default(cuid())
+  agentId    String
+  agent      Agent    @relation(fields: [agentId], references: [id])
+  actionType String
+  target     String
+  cost       Float
+  outcome    String
+  metadata   String?
+  createdAt  DateTime @default(now())
+}
+
+model Alert {
+  id        String   @id @default(cuid())
+  agentId   String
+  agent     Agent    @relation(fields: [agentId], references: [id])
+  type      String
+  message   String
+  createdAt DateTime @default(now())
+}
