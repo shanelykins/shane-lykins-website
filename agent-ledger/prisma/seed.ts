@@ -80,20 +80,20 @@ async function main() {
   await prisma.alert.deleteMany()
   await prisma.agent.deleteMany()
 
-  // Create agents with human-like names and realistic roles
+  // Create agents with first names only
   const agents = [
-    { name: 'Alex Chen', role: 'Lead Research Analyst', budget: 150, limit: 5, status: 'active' as const, actions: 24, maxCost: 4 },
-    { name: 'Sarah Mitchell', role: 'Customer Support Agent', budget: 75, limit: 2, status: 'active' as const, actions: 45, maxCost: 1.5 },
-    { name: 'Marcus Johnson', role: 'Code Review Specialist', budget: 200, limit: 8, status: 'active' as const, actions: 18, maxCost: 6 },
-    { name: 'Elena Rodriguez', role: 'Content Writer', budget: 50, limit: 2, status: 'active' as const, actions: 32, maxCost: 1.8 },
-    { name: 'James Wright', role: 'Data Pipeline Manager', budget: 300, limit: 10, status: 'active' as const, actions: 12, maxCost: 8 },
-    { name: 'Priya Patel', role: 'QA Testing Agent', budget: 100, limit: 3, status: 'active' as const, actions: 28, maxCost: 2.5 },
-    { name: 'David Kim', role: 'Security Auditor', budget: 125, limit: 4, status: 'active' as const, actions: 15, maxCost: 3.5 },
-    { name: 'Rachel Torres', role: 'Marketing Analyst', budget: 80, limit: 2.5, status: 'active' as const, actions: 38, maxCost: 2 },
-    { name: 'Michael Foster', role: 'DevOps Assistant', budget: 25, limit: 5, status: 'paused' as const, actions: 8, maxCost: 4.5 },
-    { name: 'Lisa Wang', role: 'Financial Reporting', budget: 60, limit: 2, status: 'active' as const, actions: 22, maxCost: 1.8 },
-    { name: 'Chris Anderson', role: 'Sales Intelligence', budget: 90, limit: 3, status: 'active' as const, actions: 35, maxCost: 2.8 },
-    { name: 'Nina Kowalski', role: 'HR Documentation', budget: 40, limit: 1.5, status: 'paused' as const, actions: 42, maxCost: 1.2 },
+    { name: 'Alex', role: 'Research Analyst', budget: 150, limit: 5, status: 'active' as const, actions: 24, maxCost: 4 },
+    { name: 'Sarah', role: 'Customer Support', budget: 75, limit: 2, status: 'active' as const, actions: 45, maxCost: 1.5 },
+    { name: 'Marcus', role: 'Code Reviewer', budget: 200, limit: 8, status: 'active' as const, actions: 18, maxCost: 6 },
+    { name: 'Elena', role: 'Content Writer', budget: 50, limit: 2, status: 'active' as const, actions: 32, maxCost: 1.8 },
+    { name: 'James', role: 'Data Pipeline', budget: 300, limit: 10, status: 'active' as const, actions: 12, maxCost: 8 },
+    { name: 'Priya', role: 'QA Tester', budget: 100, limit: 3, status: 'active' as const, actions: 28, maxCost: 2.5 },
+    { name: 'David', role: 'Security Auditor', budget: 125, limit: 4, status: 'active' as const, actions: 15, maxCost: 3.5 },
+    { name: 'Rachel', role: 'Marketing Analyst', budget: 80, limit: 2.5, status: 'active' as const, actions: 38, maxCost: 2 },
+    { name: 'Michael', role: 'DevOps Assistant', budget: 25, limit: 5, status: 'paused' as const, actions: 8, maxCost: 4.5 },
+    { name: 'Lisa', role: 'Financial Reports', budget: 60, limit: 2, status: 'active' as const, actions: 22, maxCost: 1.8 },
+    { name: 'Chris', role: 'Sales Intelligence', budget: 90, limit: 3, status: 'active' as const, actions: 35, maxCost: 2.8 },
+    { name: 'Nina', role: 'HR Documentation', budget: 40, limit: 1.5, status: 'paused' as const, actions: 42, maxCost: 1.2 },
   ]
 
   console.log('Creating agents...')
