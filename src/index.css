@@ -4,33 +4,33 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: 'Inter', sans-serif;
-  --font-serif: 'Libre Baskerville', serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
 
-  --color-background: hsl(40 20% 98%); /* Warm off-white, paper-like */
-  --color-foreground: hsl(240 10% 20%); /* Soft charcoal, not harsh black */
+  --color-background: hsl(0 0% 24%); /* Dark gray background */
+  --color-foreground: hsl(0 0% 100%); /* White text */
 
-  --color-card: hsl(0 0% 100%);
-  --color-card-foreground: hsl(240 10% 20%);
+  --color-card: hsl(0 0% 20%); /* Slightly darker for cards */
+  --color-card-foreground: hsl(0 0% 100%);
 
-  --color-primary: hsl(210 20% 30%); /* Muted indigo/slate */
+  --color-primary: hsl(4 68% 73%); /* Coral/salmon accent */
   --color-primary-foreground: hsl(0 0% 100%);
 
-  --color-secondary: hsl(40 10% 90%); /* Light warm gray */
-  --color-secondary-foreground: hsl(240 10% 20%);
+  --color-secondary: hsl(0 0% 30%); /* Medium gray */
+  --color-secondary-foreground: hsl(0 0% 100%);
 
-  --color-muted: hsl(240 5% 96%);
-  --color-muted-foreground: hsl(240 5% 50%);
+  --color-muted: hsl(0 0% 35%); /* Muted gray */
+  --color-muted-foreground: hsl(0 0% 70%); /* Lighter gray text */
 
-  --color-accent: hsl(150 20% 96%); /* Very subtle mint for committed background */
-  --color-accent-foreground: hsl(150 30% 25%);
+  --color-accent: hsl(4 68% 73%); /* Same as primary */
+  --color-accent-foreground: hsl(0 0% 100%);
 
-  --color-destructive: hsl(0 60% 95%);
-  --color-destructive-foreground: hsl(0 60% 40%);
+  --color-destructive: hsl(0 84.2% 60.2%);
+  --color-destructive-foreground: hsl(0 0% 100%);
 
-  --color-border: hsl(240 5% 90%);
-  --color-input: hsl(240 5% 90%);
-  --color-ring: hsl(210 20% 30%);
+  --color-border: hsl(0 0% 40%); /* Border gray */
+  --color-input: hsl(0 0% 30%);
+  --color-ring: hsl(4 68% 73%);
 
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
@@ -42,12 +42,15 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/10 selection:text-primary;
-    background-image: radial-gradient(hsl(240 5% 90% / 0.3) 1px, transparent 1px);
-    background-size: 24px 24px;
+    background-color: hsl(0 0% 24%);
+    color: hsl(0 0% 100%);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif text-foreground;
+    font-family: var(--font-serif);
+    color: hsl(0 0% 100%);
   }
 }
 

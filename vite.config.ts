@@ -30,4 +30,12 @@ export default defineConfig({
     exclude: ['lucide-react'],
   },
   publicDir: "public",
+  server: {
+    hmr: {
+      overlay: true,
+    },
+    watch: {
+      usePolling: false,
+    },
+  },
 });

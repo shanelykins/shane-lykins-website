@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Route, Switch } from "wouter";
 import Board from "@/pages/board";
 import Resume from "@/pages/resume";
+import Home from "@/pages/home";
 import { queryClient } from "@/lib/queryClient";
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
         <Toaster />
         <Switch>
           <Route path="/resume" component={Resume} />
-          <Route path="/" component={Board} />
+          <Route path="/board" component={Board} />
+          <Route path="/" component={Home} />
         </Switch>
       </TooltipProvider>
     </QueryClientProvider>
