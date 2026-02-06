@@ -7,8 +7,7 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleBookCall = () => {
-    // Replace with your actual Calendly or booking link
-    window.open("https://calendly.com/shanelykins", "_blank");
+    window.open("https://calendly.com/shanelykins/prodjoy", "_blank");
   };
 
   const handleCopyEmail = async () => {
