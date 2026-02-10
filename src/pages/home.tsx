@@ -312,8 +312,56 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-24 px-6" style={{ backgroundColor: 'hsl(0 0% 20%)' }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="w-12 h-1 mx-auto mb-8" style={{ backgroundColor: 'hsl(4 68% 73%)' }}></div>
+            <h2 className="text-4xl md:text-5xl font-serif font-medium">What Clients Say</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+            <div className="p-8 border" style={{ borderColor: 'hsl(0 0% 40%)' }}>
+              <p className="text-lg font-light leading-relaxed mb-6" style={{ color: 'hsl(0 0% 100%)' }}>
+                "Working with Shane resulted in a 15% increase in signups! He cuts through the noise with authenticity and clarity, and his TikTok stands out as one of the most tasteful content hotspots I've seen."
+              </p>
+              <div>
+                <p className="font-serif font-medium mb-1" style={{ color: 'hsl(0 0% 100%)' }}>Sid</p>
+                <p className="text-sm" style={{ color: 'hsl(0 0% 70%)' }}>Co-Founder & CEO, Clodo (YC S25)</p>
+              </div>
+            </div>
+            <div className="p-8 border" style={{ borderColor: 'hsl(0 0% 40%)' }}>
+              <p className="text-lg font-light leading-relaxed mb-6" style={{ color: 'hsl(0 0% 100%)' }}>
+                "Shane is our go to person for anything new, unproven, or cutting-edge. We literally call him Shane-gpt because he can tackle any technical challenge we throw at him and turn it into a real working system."
+              </p>
+              <div>
+                <p className="font-serif font-medium mb-1" style={{ color: 'hsl(0 0% 100%)' }}>Sasha</p>
+                <p className="text-sm" style={{ color: 'hsl(0 0% 70%)' }}>CTO & Co-Founder, Thumbprint</p>
+              </div>
+            </div>
+            <div className="p-8 border" style={{ borderColor: 'hsl(0 0% 40%)' }}>
+              <p className="text-lg font-light leading-relaxed mb-6" style={{ color: 'hsl(0 0% 100%)' }}>
+                "Shane has been incredibly helpful as we build our business. His guidance is practical, constructive, and grounded in real execution, and he consistently goes above and beyond to make sure we're set up for success."
+              </p>
+              <div>
+                <p className="font-serif font-medium mb-1" style={{ color: 'hsl(0 0% 100%)' }}>Christina</p>
+                <p className="text-sm" style={{ color: 'hsl(0 0% 70%)' }}>Founder, SAE</p>
+              </div>
+            </div>
+            <div className="p-8 border" style={{ borderColor: 'hsl(0 0% 40%)' }}>
+              <p className="text-lg font-light leading-relaxed mb-6" style={{ color: 'hsl(0 0% 100%)' }}>
+                "Shane is at the forefront of AI product development and ideation, and is my go-to partner for validating ideas and evaluating tools that complement our tech stack. He's curious, thoughtful, and focused on unlocking real business value."
+              </p>
+              <div>
+                <p className="font-serif font-medium mb-1" style={{ color: 'hsl(0 0% 100%)' }}>Vidya</p>
+                <p className="text-sm" style={{ color: 'hsl(0 0% 70%)' }}>Co-founder, The Council</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
-      <section id="contact" className="py-24 px-6" style={{ backgroundColor: 'hsl(0 0% 20%)' }}>
+      <section id="contact" className="py-24 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <div className="w-12 h-1 bg-primary mx-auto mb-8"></div>
           <h2 className="text-4xl md:text-5xl font-serif font-medium mb-6">Build and Grow Your Product</h2>
