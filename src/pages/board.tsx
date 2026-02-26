@@ -16,6 +16,7 @@ import * as z from "zod";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { toast } from "sonner";
 import { Checkbox } from "@/components/ui/checkbox";
+import { trackEvent } from "@/lib/analytics";
 
 const MOCK_PARTICIPANTS: Participant[] = [
   { id: "p1", name: "Alex", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex" },
@@ -227,6 +228,10 @@ export default function Board() {
     defaultValues: { email: "" },
   });
 
+  useEffect(() => {
+    trackEvent("commitment_board");
+  }, []);
+
   // Initialize form when invite dialog opens with a pre-selected project
   useEffect(() => {
     if (isInviteOpen) {
@@ -252,6 +257,7 @@ export default function Board() {
 
   const onBetaSignup = async (values: z.infer<typeof betaSignupSchema>) => {
     try {
+      trackEvent("beta_signup_invites", { action: "beta_signup" });
       // Store email using Formspree (free form submission service)
       const formspreeEndpoint = 'https://formspree.io/f/mlggzvrv';
       
@@ -352,6 +358,10 @@ export default function Board() {
   };
 
   const onInviteSubmit = (values: z.infer<typeof inviteSchema>) => {
+    trackEvent("beta_signup_invites", {
+      action: "invite_sent",
+      projectCount: values.projectIds.length,
+    });
     // Generate a random participant for demo purposes
     const randomParticipant = MOCK_PARTICIPANTS[Math.floor(Math.random() * MOCK_PARTICIPANTS.length)];
     

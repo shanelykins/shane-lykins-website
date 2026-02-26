@@ -1,12 +1,14 @@
 import { Mail, Linkedin, Twitter, Music, Calendar, ChevronDown, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { trackEvent } from "@/lib/analytics";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleBookCall = () => {
+  const handleBookCall = (source: string) => {
+    trackEvent("schedule_call", { source });
     window.open("https://calendly.com/shanelykins/prodjoy", "_blank");
   };
 
@@ -26,6 +28,10 @@ export default function Home() {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  useEffect(() => {
+    trackEvent("landing_page");
+  }, []);
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'hsl(0 0% 24%)', color: 'hsl(0 0% 100%)' }}>
@@ -77,7 +83,7 @@ export default function Home() {
                 Connect
               </button>
               <Button
-                onClick={handleBookCall}
+                onClick={() => handleBookCall("nav")}
                 size="sm"
                 className="px-4 py-2 text-sm font-medium tracking-wide"
                 style={{ backgroundColor: 'hsl(4 68% 73%)', color: 'hsl(0 0% 100%)' }}
@@ -140,7 +146,7 @@ export default function Home() {
                 Connect
               </button>
               <Button
-                onClick={handleBookCall}
+                onClick={() => handleBookCall("mobile_nav")}
                 size="sm"
                 className="w-full px-4 py-2 text-sm font-medium tracking-wide mt-4"
                 style={{ backgroundColor: 'hsl(4 68% 73%)', color: 'hsl(0 0% 100%)' }}
@@ -167,7 +173,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <Button
-              onClick={handleBookCall}
+              onClick={() => handleBookCall("hero")}
               size="lg"
               className="px-8 py-6 text-base font-medium tracking-wide"
               style={{ backgroundColor: 'hsl(4 68% 73%)', color: 'hsl(0 0% 100%)' }}
@@ -370,7 +376,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button
-              onClick={handleBookCall}
+              onClick={() => handleBookCall("contact")}
               size="lg"
               className="px-8 py-6 text-base font-medium tracking-wide"
               style={{ backgroundColor: 'hsl(4 68% 73%)', color: 'hsl(0 0% 100%)' }}
