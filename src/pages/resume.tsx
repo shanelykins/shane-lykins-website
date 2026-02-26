@@ -1,13 +1,15 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Mail, Linkedin, Twitter, Music, ExternalLink, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
+import { trackEvent } from "@/lib/analytics";
 
 export default function Resume() {
   const resumeRef = useRef<HTMLDivElement>(null);
 
   const handleDownloadPDF = () => {
+    trackEvent("resume_view_download", { action: "download" });
     // Simple approach: Use browser's native print dialog
     // User can save as PDF from there
     const printWindow = window.open('', '_blank');
@@ -73,6 +75,10 @@ export default function Resume() {
       toast.success('Print dialog opened - choose "Save as PDF"');
     }, 250);
   };
+
+  useEffect(() => {
+    trackEvent("resume_view_download", { action: "view" });
+  }, []);
 
   return (
     <div className="min-h-screen w-full bg-background p-6 md:p-12 lg:p-16 font-sans relative">
