@@ -142,6 +142,16 @@
             box-shadow: var(--shadow-md);
         }
 
+        .mobile-cta {
+            display: none;
+            background: var(--blue);
+            color: white;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
         .mobile-toggle {
             display: none;
             flex-direction: column;
@@ -164,14 +174,13 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, var(--off-white) 0%, var(--white) 100%);
         }
 
         .hero-bg {
             position: absolute;
             top: 0;
-            right: 0;
-            width: 55%;
+            left: 0;
+            width: 100%;
             height: 100%;
             z-index: 1;
         }
@@ -181,14 +190,11 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
+            transform: scaleX(-1);
         }
 
         .hero-bg::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, var(--white) 0%, transparent 30%);
-            z-index: 2;
+            display: none;
         }
 
         .hero-content {
@@ -201,7 +207,12 @@
         }
 
         .hero-inner {
-            max-width: 600px;
+            max-width: 550px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 2.5rem;
+            border-radius: 12px;
         }
 
         .hero-badge {
@@ -224,11 +235,11 @@
 
         .hero h1 {
             font-family: var(--font-display);
-            font-size: clamp(2.75rem, 5vw, 4rem);
+            font-size: clamp(2.5rem, 4vw, 3.25rem);
             font-weight: 500;
             line-height: 1.15;
             color: var(--black);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .hero h1 em {
@@ -237,10 +248,10 @@
         }
 
         .hero-text {
-            font-size: 1.125rem;
+            font-size: 1.05rem;
             color: var(--dark-gray);
-            margin-bottom: 2.5rem;
-            line-height: 1.75;
+            margin-bottom: 2rem;
+            line-height: 1.7;
         }
 
         .hero-ctas {
@@ -286,12 +297,13 @@
             color: var(--blue);
         }
 
+
         .hero-stats {
             display: flex;
-            gap: 3rem;
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--light-gray);
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--mid-gray);
         }
 
         .hero-stat {
@@ -300,14 +312,14 @@
 
         .hero-stat-number {
             font-family: var(--font-display);
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 500;
             color: var(--black);
             line-height: 1;
         }
 
         .hero-stat-label {
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             color: var(--mid-gray);
             margin-top: 0.25rem;
         }
@@ -365,23 +377,10 @@
         .service-card {
             background: var(--white);
             border-radius: 12px;
-            padding: 2.5rem;
             transition: all 0.3s ease;
             border: 1px solid var(--light-gray);
             position: relative;
             overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--accent);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
         }
 
         .service-card:hover {
@@ -390,25 +389,25 @@
             border-color: transparent;
         }
 
-        .service-card:hover::before {
-            transform: scaleX(1);
+        .service-card-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
         }
 
-        .service-icon {
-            width: 56px;
-            height: 56px;
-            background: var(--blue-light);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
+        .service-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
         }
 
-        .service-icon svg {
-            width: 28px;
-            height: 28px;
-            color: var(--blue);
+        .service-card:hover .service-card-image img {
+            transform: scale(1.05);
+        }
+
+        .service-card-content {
+            padding: 1.75rem;
         }
 
         .service-card h3 {
@@ -416,14 +415,14 @@
             font-size: 1.375rem;
             font-weight: 500;
             color: var(--black);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
         }
 
         .service-card p {
             color: var(--dark-gray);
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
         }
 
         .service-link {
@@ -438,6 +437,133 @@
 
         .service-link:hover {
             gap: 0.75rem;
+        }
+
+        /* Projects Gallery */
+        .projects {
+            background: var(--charcoal);
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .projects .section-tag {
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+        }
+
+        .projects .section-title {
+            color: var(--white);
+        }
+
+        .projects .section-subtitle {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .projects-swiper {
+            display: flex;
+            gap: 1.25rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            padding: 1rem 0 2rem;
+            margin: 0 -2rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .projects-swiper::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .projects-swiper::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+        }
+
+        .projects-swiper::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.3);
+            border-radius: 3px;
+        }
+
+        .projects-swiper::-webkit-scrollbar-thumb:hover {
+            background: rgba(255,255,255,0.5);
+        }
+
+        .project-card {
+            flex: 0 0 300px;
+            scroll-snap-align: start;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            cursor: pointer;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 40%, transparent 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.25rem;
+        }
+
+        .project-card-overlay span {
+            font-size: 0.95rem;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .swiper-wrapper {
+            position: relative;
+        }
+
+        .swiper-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.6);
+            border: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+
+        .swiper-btn:hover {
+            background: rgba(0,0,0,0.8);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .swiper-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .swiper-btn-prev {
+            left: 0.5rem;
+        }
+
+        .swiper-btn-next {
+            right: 0.5rem;
         }
 
         /* Offers */
@@ -1025,41 +1151,20 @@
         }
 
         /* Sticky Mobile CTA */
-        .mobile-sticky-cta {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: var(--white);
-            padding: 1rem;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
-            z-index: 100;
-            gap: 0.75rem;
-        }
-
-        .mobile-sticky-cta .btn {
-            flex: 1;
-            padding: 1rem;
-            font-size: 0.9rem;
-            text-align: center;
-        }
-
-        .mobile-sticky-cta .btn-call {
-            background: var(--charcoal);
-            color: white;
-        }
-
         /* Responsive - Tablet */
         @media (max-width: 1024px) {
-            .hero-bg {
-                width: 50%;
-                opacity: 0.4;
+            .hero-inner {
+                max-width: 450px;
+                padding: 2rem;
             }
 
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1.25rem;
+            }
+
+            .project-card {
+                flex: 0 0 280px;
             }
 
             .about-grid {
@@ -1107,6 +1212,10 @@
                 display: none;
             }
 
+            .mobile-cta {
+                display: block;
+            }
+
             .mobile-toggle {
                 display: flex;
                 width: 48px;
@@ -1124,34 +1233,48 @@
                 display: flex;
             }
 
-            .mobile-sticky-cta {
-                display: flex;
-            }
-
             /* Hero - Mobile First */
             .hero {
                 min-height: auto;
-                flex-direction: column;
                 padding-top: 70px;
+                flex-direction: column;
             }
 
             .hero-bg {
                 position: relative;
                 width: 100%;
-                height: 220px;
+                height: 300px;
                 flex-shrink: 0;
             }
 
+            .hero-bg img {
+                transform: none;
+                object-position: center;
+            }
+
             .hero-bg::before {
-                background: linear-gradient(180deg, rgba(255,255,255,0.8) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.9) 100%);
+                display: block;
+                background: linear-gradient(
+                    180deg,
+                    transparent 0%,
+                    transparent 50%,
+                    rgba(255, 255, 255, 0.6) 80%,
+                    var(--white) 100%
+                );
             }
 
             .hero-content {
-                padding: 2rem 1.25rem 6rem;
+                padding: 2rem 1.25rem 3rem;
+                background: var(--white);
             }
 
             .hero-inner {
                 max-width: 100%;
+                background: none;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                padding: 0;
+                border-radius: 0;
             }
 
             .hero-badge {
@@ -1235,35 +1358,47 @@
                 gap: 1rem;
             }
 
-            .service-card {
-                padding: 1.75rem 1.5rem;
+            .service-card-image {
+                height: 180px;
             }
 
-            .service-icon {
-                width: 48px;
-                height: 48px;
-                margin-bottom: 1rem;
-            }
-
-            .service-icon svg {
-                width: 24px;
-                height: 24px;
+            .service-card-content {
+                padding: 1.25rem;
             }
 
             .service-card h3 {
-                font-size: 1.25rem;
-                margin-bottom: 0.5rem;
+                font-size: 1.15rem;
+                margin-bottom: 0.4rem;
             }
 
             .service-card p {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
                 margin-bottom: 1rem;
-                line-height: 1.6;
+                line-height: 1.5;
             }
 
             .service-link {
+                font-size: 0.85rem;
+            }
+
+            /* Projects */
+            .projects-swiper {
+                margin: 0 -1.25rem;
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+                gap: 1rem;
+            }
+
+            .project-card {
+                flex: 0 0 260px;
+            }
+
+            .project-card-overlay span {
                 font-size: 0.875rem;
-                padding: 0.5rem 0;
+            }
+
+            .swiper-btn {
+                display: none;
             }
 
             /* Offers */
@@ -1458,7 +1593,7 @@
 
             /* Footer */
             footer {
-                padding: 3rem 1.25rem 6rem; /* Extra space for sticky CTA */
+                padding: 3rem 1.25rem 2rem;
             }
 
             .footer-top {
@@ -1545,6 +1680,7 @@
             transform: translateY(0);
         }
     </style>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -1555,11 +1691,13 @@
             </a>
             <nav>
                 <a href="#services">Services</a>
+                <a href="#projects">Projects</a>
                 <a href="#about">About</a>
                 <a href="#team">Our Team</a>
                 <a href="#contact">Contact</a>
             </nav>
             <a href="#contact" class="header-cta">Get Free Quote</a>
+            <a href="tel:208-466-2476" class="mobile-cta">Call Now</a>
             <div class="mobile-toggle" onclick="toggleMobile()">
                 <span></span>
                 <span></span>
@@ -1576,6 +1714,7 @@
         </div>
         <div class="mobile-nav-links">
             <a href="#services" onclick="toggleMobile()">Services</a>
+            <a href="#projects" onclick="toggleMobile()">Recent Projects</a>
             <a href="#offers" onclick="toggleMobile()">Special Offers</a>
             <a href="#about" onclick="toggleMobile()">About Us</a>
             <a href="#team" onclick="toggleMobile()">Our Team</a>
@@ -1591,13 +1730,6 @@
     </div>
 
     <!-- Mobile Sticky CTA -->
-    <div class="mobile-sticky-cta">
-        <a href="tel:208-466-2476" class="btn btn-call">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-            Call Now
-        </a>
-        <a href="#contact" class="btn btn-primary">Get Free Quote</a>
-    </div>
 
     <!-- Hero -->
     <section class="hero">
@@ -1611,7 +1743,7 @@
                     Family Owned Since 1965
                 </div>
                 <h1>Quality Glass Solutions for the <em>Treasure Valley</em></h1>
-                <p class="hero-text">From elegant shower enclosures to precision window installations, Asqueta Glass has been Idaho's trusted glass experts for over 60 years. Three generations of craftsmanship, one commitment to excellence.</p>
+                <p class="hero-text">From elegant shower enclosures to precision window installations, Asqueta Glass has been serving the Treasure Valley since 1965. Locally owned and family operated.</p>
                 <div class="hero-ctas">
                     <a href="#contact" class="btn btn-primary">
                         Get Free Estimate
@@ -1633,7 +1765,7 @@
                     </div>
                     <div class="hero-stat">
                         <div class="hero-stat-number">3rd</div>
-                        <div class="hero-stat-label">Generation Owned</div>
+                        <div class="hero-stat-label">Owners</div>
                     </div>
                 </div>
             </div>
@@ -1651,57 +1783,93 @@
 
             <div class="services-grid">
                 <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                    <div class="service-card-image">
+                        <img src="https://images.squarespace-cdn.com/content/v1/699f21be4d4eaf4e114bab5b/af56e818-d7ea-44b8-a82a-d9163ab70ece/corner+shower.jpg" alt="Frameless corner shower enclosure">
                     </div>
-                    <h3>Shower Enclosures</h3>
-                    <p>Frameless, semi-frameless, and barn door installations that transform your bathroom into a luxurious retreat.</p>
-                    <a href="#contact" class="service-link">Request Quote <span>→</span></a>
+                    <div class="service-card-content">
+                        <h3>Shower Enclosures</h3>
+                        <p>Frameless, semi-frameless, and barn door installations that transform your bathroom.</p>
+                        <a href="#contact" class="service-link">Request Quote <span>→</span></a>
+                    </div>
                 </div>
 
                 <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+                    <div class="service-card-image">
+                        <img src="https://images.squarespace-cdn.com/content/v1/699f21be4d4eaf4e114bab5b/5734ac1a-4066-4a27-8349-e2d2c5aad886/Before+after+window+replacement.jpg" alt="Window replacement before and after">
                     </div>
-                    <h3>Window Services</h3>
-                    <p>Repairs, replacements, new construction windows, and double-pane glass upgrades for any home.</p>
-                    <a href="#contact" class="service-link">Request Quote <span>→</span></a>
+                    <div class="service-card-content">
+                        <h3>Window Services</h3>
+                        <p>Repairs, replacements, new construction, and double-pane upgrades for any home.</p>
+                        <a href="#contact" class="service-link">Request Quote <span>→</span></a>
+                    </div>
                 </div>
 
                 <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                    <div class="service-card-image">
+                        <img src="https://images.squarespace-cdn.com/content/v1/699f21be4d4eaf4e114bab5b/d9a12d9c-cac5-478c-8479-92015e7dd36b/storefront.png" alt="Commercial glass storefront">
                     </div>
-                    <h3>Commercial Storefronts</h3>
-                    <p>Professional storefront installation and servicing for businesses throughout the Treasure Valley.</p>
-                    <a href="#contact" class="service-link">Request Quote <span>→</span></a>
+                    <div class="service-card-content">
+                        <h3>Commercial Storefronts</h3>
+                        <p>Professional storefront installation and servicing for Treasure Valley businesses.</p>
+                        <a href="#contact" class="service-link">Request Quote <span>→</span></a>
+                    </div>
                 </div>
 
                 <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
+                    <div class="service-card-image">
+                        <img src="https://images.squarespace-cdn.com/content/v1/699f21be4d4eaf4e114bab5b/388565ca-3083-4458-a1e7-67011efcb53f/New+Customer+Discount.png" alt="Custom glass work">
                     </div>
-                    <h3>Custom Glass</h3>
-                    <p>Bent glass, table tops, mirrors, shelves, cabinet glass, and specialty pieces crafted to your exact specifications.</p>
-                    <a href="#contact" class="service-link">Request Quote <span>→</span></a>
+                    <div class="service-card-content">
+                        <h3>Custom Glass</h3>
+                        <p>Table tops, mirrors, shelves, cabinet glass, and specialty pieces to your specs.</p>
+                        <a href="#contact" class="service-link">Request Quote <span>→</span></a>
+                    </div>
                 </div>
 
                 <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                    <div class="service-card-image">
+                        <img src="https://images.squarespace-cdn.com/content/v1/699f21be4d4eaf4e114bab5b/0d70566b-29a3-4cb4-aa14-59339abaf97f/Bevel.PNG" alt="Beveled glass edgework">
                     </div>
-                    <h3>Specialty Glass</h3>
-                    <p>Pattern, obscure, and tinted glass with expert edgework including beveling, polishing, and grinding.</p>
-                    <a href="#contact" class="service-link">Request Quote <span>→</span></a>
+                    <div class="service-card-content">
+                        <h3>Edgework & Specialty</h3>
+                        <p>Beveling, polishing, grinding, plus pattern, obscure, and tinted glass options.</p>
+                        <a href="#contact" class="service-link">Request Quote <span>→</span></a>
+                    </div>
                 </div>
 
                 <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                    <div class="service-card-image">
+                        <img src="https://images.squarespace-cdn.com/content/v1/699f21be4d4eaf4e114bab5b/d85a722a-e4b8-4b76-a8e5-6c77ceb0f4c7/arch+top+window+replacement" alt="Arch top window">
                     </div>
-                    <h3>Screens & Repairs</h3>
-                    <p>Complete screen services plus specialized glass for boats, UTVs, tractors, and fireplaces.</p>
-                    <a href="#contact" class="service-link">Request Quote <span>→</span></a>
+                    <div class="service-card-content">
+                        <h3>Screens & Repairs</h3>
+                        <p>Complete screen services plus glass for boats, UTVs, tractors, and fireplaces.</p>
+                        <a href="#contact" class="service-link">Request Quote <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Projects -->
+    <section class="projects" id="projects">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Our Work</span>
+                <h2 class="section-title">Recent Projects</h2>
+                <p class="section-subtitle">See examples of our craftsmanship throughout the Treasure Valley.</p>
+            </div>
+
+            <div class="swiper-wrapper">
+                <button class="swiper-btn swiper-btn-prev" onclick="scrollProjects(-1)" aria-label="Previous">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button class="swiper-btn swiper-btn-next" onclick="scrollProjects(1)" aria-label="Next">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </button>
+
+                <div class="projects-swiper" id="projectsSwiper">
+                    <!-- Projects loaded dynamically from /zach/data/projects.json -->
                 </div>
             </div>
         </div>
@@ -1736,8 +1904,8 @@
             <div class="about-grid">
                 <div class="about-content">
                     <span class="section-tag">Our Story</span>
-                    <h2 class="section-title">Three Generations of Glass Mastery</h2>
-                    <p>What began as a single craftsman's vision in 1965 has grown into the Treasure Valley's most trusted glass company. Asqueta Glass by Lopo & Associates remains family-owned and operated, with three generations of expertise behind every project.</p>
+                    <h2 class="section-title">Serving the Treasure Valley Since 1965</h2>
+                    <p>Asqueta Glass has been the Treasure Valley's trusted glass company for over 60 years. Locally owned and family operated by the Lopo family, we continue the tradition of quality craftsmanship that our customers have relied on for decades.</p>
                     <p>Our team combines traditional craftsmanship with modern techniques, ensuring each installation meets the highest standards of quality and precision. From custom shower enclosures to commercial storefronts, we take pride in every piece of glass we touch.</p>
 
                     <div class="about-features">
@@ -1913,7 +2081,9 @@
 
                 <div class="contact-form">
                     <h3>Request a Free Estimate</h3>
-                    <form onsubmit="handleSubmit(event)">
+                    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
+                        <input type="hidden" name="form-name" value="contact">
+                        <p style="display:none"><input name="bot-field"></p>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name">Your Name *</label>
@@ -2007,6 +2177,39 @@
             document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
         }
 
+        // Projects swiper navigation
+        function scrollProjects(direction) {
+            const swiper = document.querySelector('.projects-swiper');
+            const card = swiper.querySelector('.project-card');
+            if (card) {
+                const cardWidth = card.offsetWidth + 20;
+                swiper.scrollBy({ left: cardWidth * direction * 2, behavior: 'smooth' });
+            }
+        }
+
+        // Load projects from JSON
+        async function loadProjects() {
+            try {
+                const response = await fetch('/zach/data/projects.json');
+                const data = await response.json();
+                const swiper = document.getElementById('projectsSwiper');
+
+                if (data.projects && data.projects.length > 0) {
+                    swiper.innerHTML = data.projects.map(project => `
+                        <div class="project-card">
+                            <img src="${project.image}" alt="${project.title}" loading="lazy">
+                            <div class="project-card-overlay"><span>${project.title}</span></div>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('Error loading projects:', error);
+            }
+        }
+
+        // Load projects on page load
+        document.addEventListener('DOMContentLoaded', loadProjects);
+
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -2021,8 +2224,21 @@
         // Form submit
         function handleSubmit(e) {
             e.preventDefault();
-            alert('Thank you! We will contact you within 24 hours.');
-            e.target.reset();
+            const form = e.target;
+            const formData = new FormData(form);
+
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                alert('Thank you! We will contact you within 24 hours.');
+                form.reset();
+            })
+            .catch((error) => {
+                alert('Sorry, there was an error. Please call us at 208-466-2476.');
+            });
         }
 
         // Scroll animations
@@ -2035,6 +2251,17 @@
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
         document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    </script>
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/zach/admin/";
+                    });
+                }
+            });
+        }
     </script>
 </body>
 </html>

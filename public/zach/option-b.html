@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asqueta Glass | Nampa, Idaho | Since 1965</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-off-white: #f5f4f2;
+            --text-black: #0d0d0d;
+            --accent-orange: #e85d04;
+            --charcoal: #2b2b2b;
+            --light-gray: #e5e4e2;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Barlow', sans-serif;
+            background-color: var(--bg-off-white);
+            color: var(--text-black);
+            line-height: 1.6;
+        }
+
+        /* STICKY HEADER */
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--charcoal);
+            z-index: 1000;
+            padding: 12px 0;
+        }
+
+        .sticky-header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sticky-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .sticky-phone {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 32px;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .sticky-phone:hover {
+            color: var(--accent-orange);
+        }
+
+        /* MAIN CONTENT OFFSET */
+        .main-content {
+            padding-top: 80px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            min-height: 85vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background-color: var(--charcoal);
+            overflow: hidden;
+        }
+
+        .hero-content {
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-orange);
+            margin-bottom: 16px;
+            border: 2px solid var(--accent-orange);
+            padding: 8px 16px;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .hero h1 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 72px;
+            line-height: 1;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero-tagline {
+            font-size: 20px;
+            color: #ccc;
+            margin-bottom: 48px;
+            max-width: 480px;
+        }
+
+        .hero-phone-block {
+            background-color: var(--accent-orange);
+            padding: 32px 40px;
+            display: inline-block;
+            margin-bottom: 32px;
+        }
+
+        .hero-phone-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 8px;
+        }
+
+        .hero-phone-number {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 56px;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 2px;
+            display: block;
+        }
+
+        .hero-phone-number:hover {
+            color: var(--charcoal);
+        }
+
+        .hero-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* HORIZONTAL RULE DIVIDER */
+        .divider {
+            border: none;
+            border-top: 4px solid var(--charcoal);
+            margin: 0;
+        }
+
+        .divider-light {
+            border-top-color: var(--light-gray);
+        }
+
+        /* PHONE BANNER */
+        .phone-banner {
+            background-color: var(--bg-off-white);
+            padding: 40px 24px;
+            text-align: center;
+            border-top: 4px solid var(--charcoal);
+            border-bottom: 4px solid var(--charcoal);
+        }
+
+        .phone-banner-text {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+        }
+
+        .phone-banner-number {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 48px;
+            color: var(--text-black);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .phone-banner-number:hover {
+            color: var(--accent-orange);
+        }
+
+        /* SECTION STYLING */
+        .section {
+            padding: 80px 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 48px;
+        }
+
+        .section-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-orange);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 48px;
+            text-transform: uppercase;
+            color: var(--text-black);
+            letter-spacing: -1px;
+        }
+
+        /* SERVICES GRID */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background-color: var(--charcoal);
+            border: 2px solid var(--charcoal);
+        }
+
+        .service-card {
+            background-color: var(--bg-off-white);
+            padding: 40px 32px;
+            text-align: center;
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 20px;
+            background-color: var(--charcoal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: #fff;
+        }
+
+        .service-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            text-transform: uppercase;
+            color: var(--text-black);
+            margin-bottom: 12px;
+        }
+
+        .service-desc {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* ABOUT SECTION */
+        .about-section {
+            background-color: var(--charcoal);
+            color: #fff;
+            padding: 80px 24px;
+        }
+
+        .about-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .stat-block {
+            border-left: 4px solid var(--accent-orange);
+            padding-left: 24px;
+        }
+
+        .stat-number {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 64px;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin-top: 8px;
+        }
+
+        .about-content h2 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 48px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 24px;
+        }
+
+        /* PROMO GALLERY */
+        .promo-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .promo-image {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            border: 2px solid var(--charcoal);
+        }
+
+        .promo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* TEAM SECTION */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+        }
+
+        .team-card {
+            text-align: center;
+        }
+
+        .team-photo {
+            aspect-ratio: 1;
+            background-color: var(--light-gray);
+            margin-bottom: 20px;
+            border: 2px solid var(--charcoal);
+            overflow: hidden;
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            text-transform: uppercase;
+            color: var(--text-black);
+            margin-bottom: 4px;
+        }
+
+        .team-role {
+            font-size: 14px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* SUPPLIERS SECTION */
+        .suppliers-section {
+            background-color: var(--light-gray);
+            padding: 60px 24px;
+            border-top: 4px solid var(--charcoal);
+            border-bottom: 4px solid var(--charcoal);
+        }
+
+        .suppliers-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .suppliers-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-align: center;
+            color: var(--charcoal);
+            margin-bottom: 40px;
+        }
+
+        .suppliers-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 32px;
+            align-items: center;
+        }
+
+        .supplier-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+        }
+
+        .supplier-logo img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        /* SERVICE AREAS */
+        .areas-section {
+            background-color: var(--charcoal);
+            padding: 60px 24px;
+        }
+
+        .areas-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .areas-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 32px;
+        }
+
+        .areas-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 24px;
+        }
+
+        .area-item {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .area-item::after {
+            content: '|';
+            margin-left: 24px;
+            color: #444;
+        }
+
+        .area-item:last-child::after {
+            display: none;
+        }
+
+        /* CONTACT SECTION */
+        .contact-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+        }
+
+        .contact-info {
+            background-color: var(--accent-orange);
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info h2 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 48px;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 40px;
+        }
+
+        .contact-phone {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 48px;
+            color: #fff;
+            text-decoration: none;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        .contact-phone:hover {
+            color: var(--charcoal);
+        }
+
+        .contact-detail {
+            margin-bottom: 24px;
+        }
+
+        .contact-detail-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 4px;
+        }
+
+        .contact-detail-value {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .contact-form-section {
+            background-color: var(--bg-off-white);
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-form-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 32px;
+            text-transform: uppercase;
+            color: var(--text-black);
+            margin-bottom: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-black);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 16px;
+            font-family: 'Barlow', sans-serif;
+            font-size: 16px;
+            border: 2px solid var(--charcoal);
+            background-color: #fff;
+            color: var(--text-black);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-orange);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-submit {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 20px 48px;
+            background-color: var(--accent-orange);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+
+        .form-submit:hover {
+            background-color: var(--charcoal);
+        }
+
+        /* FOOTER */
+        .footer {
+            background-color: var(--charcoal);
+            padding: 48px 24px 32px;
+            border-top: 4px solid var(--accent-orange);
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .footer-phone {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 36px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-phone:hover {
+            color: var(--accent-orange);
+        }
+
+        .footer-copy {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid #444;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .hero-image {
+                height: 400px;
+                order: -1;
+            }
+
+            .hero-content {
+                padding: 60px 40px;
+            }
+
+            .hero h1 {
+                font-size: 56px;
+            }
+
+            .hero-phone-number {
+                font-size: 44px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-inner {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .suppliers-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .contact-section {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info,
+            .contact-form-section {
+                padding: 60px 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sticky-header-inner {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .sticky-phone {
+                font-size: 24px;
+            }
+
+            .main-content {
+                padding-top: 100px;
+            }
+
+            .hero-content {
+                padding: 40px 24px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero-phone-block {
+                padding: 24px;
+            }
+
+            .hero-phone-number {
+                font-size: 32px;
+            }
+
+            .phone-banner-number {
+                font-size: 36px;
+            }
+
+            .section {
+                padding: 60px 24px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-number {
+                font-size: 48px;
+            }
+
+            .about-content h2 {
+                font-size: 36px;
+            }
+
+            .promo-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .suppliers-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info h2,
+            .contact-phone {
+                font-size: 36px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 24px;
+                text-align: center;
+            }
+
+            .footer-phone {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-phone-number {
+                font-size: 28px;
+            }
+
+            .suppliers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .area-item::after {
+                display: none;
+            }
+
+            .areas-list {
+                gap: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- STICKY HEADER -->
+    <header class="sticky-header">
+        <div class="sticky-header-inner">
+            <a href="#" class="sticky-logo">
+                <img src="https://images.squarespace-cdn.com/content/v1/699f21be4d4eaf4e114bab5b/03d2b8ee-e8cf-40c2-9823-5cbb5d378e97/ChatGPT+Image+Feb+26%2C+2026%2C+10_16_29+AM.png" alt="Asqueta Glass">
+            </a>
+            <a href="tel:208-466-2476" class="sticky-phone">208-466-2476</a>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-content">
+                <span class="hero-badge">Since 1965</span>
+                <h1>Professional Glass Services</h1>
+                <p class="hero-tagline">60 years of quality craftsmanship serving Nampa, Idaho and the Treasure Valley. Commercial and residential glass solutions you can trust.</p>
+                <div class="hero-phone-block">
+                    <div class="hero-phone-label">Call Now For Free Estimate</div>
+                    <a href="tel:208-466-2476" class="hero-phone-number">208-466-2476</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.squarespace-cdn.com/content/v1/699f21be4d4eaf4e114bab5b/96d87818-0712-4576-bff3-ebe81c3c3d9b/Glass.png" alt="Asqueta Glass Work">
+            </div>
+        </section>
+
+        <!-- PHONE BANNER -->
+        <div class="phone-banner">
+            <div class="phone-banner-text">Ready to Start Your Project?</div>
+            <a href="tel:208-466-2476" class="phone-banner-number">208-466-2476</a>
+        </div>
+
+        <!-- SERVICES SECTION -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">What We Do</div>
+                <h2 class="section-title">Our Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 5h-8l-2-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-1 14H5c-.55 0-1-.45-1-1V9h16v9c0 .55-.45 1-1 1z"/></svg>
+                    </div>
+                    <h3 class="service-title">Shower Enclosures</h3>
+                    <p class="service-desc">Custom frameless and framed shower doors. Precision measured and professionally installed.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M3 5v14h18V5H3zm16 12H5V7h14v10z"/></svg>
+                    </div>
+                    <h3 class="service-title">Windows</h3>
+                    <p class="service-desc">Residential and commercial window installation, replacement, and repair services.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                    <h3 class="service-title">Commercial Storefronts</h3>
+                    <p class="service-desc">Complete storefront systems, automatic doors, and commercial glazing solutions.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm5 15h-2v-6H9v6H7v-7.81l5-4.5 5 4.5V18z"/></svg>
+                    </div>
+                    <h3 class="service-title">Custom Glass</h3>
+                    <p class="service-desc">Table tops, shelving, mirrors, and specialty cuts. Any shape, any size.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+                    </div>
+                    <h3 class="service-title">Specialty Glass</h3>
+                    <p class="service-desc">Tempered, laminated, insulated, and decorative glass. Energy-efficient options available.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 11h-4.17l3.24-3.24-1.41-1.42L15 11h-2V9l4.66-4.66-1.42-1.41L13 6.17V2h-2v4.17L7.76 2.93 6.34 4.34 11 9v2H9L4.34 6.34 2.93 7.76 6.17 11H2v2h4.17l-3.24 3.24 1.41 1.42L9 13h2v2l-4.66 4.66 1.42 1.41L11 17.83V22h2v-4.17l3.24 3.24 1.42-1.41L13 15v-2h2l4.66 4.66 1.41-1.42L17.83 13H22v-2z"/></svg>
+                    </div>
+                    <h3 class="service-title">Screens & Repairs</h3>
+                    <p class="service-desc">Window and door screen repair and replacement. Quick turnaround on all repairs.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <!-- ABOUT SECTION -->
+        <section class="about-section">
+            <div class="about-inner">
+                <div class="about-stats">
+                    <div class="stat-block">
+                        <div class="stat-number">60+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-block">
+                        <div class="stat-number">1965</div>
+                        <div class="stat-label">Established</div>
+                    </div>
+                    <div class="stat-block">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Cities Served</div>
+                    </div>
+                    <div class="stat-block">
+                        <div class="stat-number">1000s</div>
+                        <div class="stat-label">Happy Customers</div>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <h2>Built on Trust, Crafted with Care</h2>
+                    <p>Since 1965, Asqueta Glass has been the Treasure Valley's trusted source for quality glass products and professional installation. Three generations of expertise, serving residential and commercial customers with honest pricing and reliable service.</p>
+                    <p>When you need it done right the first time, call the experts who have been doing it for over six decades.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHONE BANNER 2 -->
+        <div class="phone-banner">
+            <div class="phone-banner-text">Questions? Get a Free Quote Today</div>
+            <a href="tel:208-466-2476" class="phone-banner-number">208-466-2476</a>
+        </div>
+
+        <!-- PROMO GALLERY -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">Our Work</div>
+                <h2 class="section-title">Recent Projects</h2>
+            </div>
+            <div class="promo-gallery">
+                <div class="promo-image">
+                    <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&h=450&fit=crop" alt="Shower Enclosure Project">
+                </div>
+                <div class="promo-image">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=450&fit=crop" alt="Window Installation">
+                </div>
+                <div class="promo-image">
+                    <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&h=450&fit=crop" alt="Commercial Storefront">
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <!-- TEAM SECTION -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">Meet the Experts</div>
+                <h2 class="section-title">Our Team</h2>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Team Member">
+                    </div>
+                    <h3 class="team-name">Mike Johnson</h3>
+                    <p class="team-role">Owner / Glazier</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face" alt="Team Member">
+                    </div>
+                    <h3 class="team-name">David Martinez</h3>
+                    <p class="team-role">Lead Installer</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop&crop=face" alt="Team Member">
+                    </div>
+                    <h3 class="team-name">Sarah Williams</h3>
+                    <p class="team-role">Office Manager</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face" alt="Team Member">
+                    </div>
+                    <h3 class="team-name">Tom Anderson</h3>
+                    <p class="team-role">Glass Technician</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUPPLIERS SECTION -->
+        <section class="suppliers-section">
+            <div class="suppliers-inner">
+                <h3 class="suppliers-title">Trusted Supplier Partners</h3>
+                <div class="suppliers-grid">
+                    <div class="supplier-logo">
+                        <img src="https://via.placeholder.com/120x60?text=PPG" alt="PPG">
+                    </div>
+                    <div class="supplier-logo">
+                        <img src="https://via.placeholder.com/120x60?text=Guardian" alt="Guardian">
+                    </div>
+                    <div class="supplier-logo">
+                        <img src="https://via.placeholder.com/120x60?text=Pilkington" alt="Pilkington">
+                    </div>
+                    <div class="supplier-logo">
+                        <img src="https://via.placeholder.com/120x60?text=AGC" alt="AGC">
+                    </div>
+                    <div class="supplier-logo">
+                        <img src="https://via.placeholder.com/120x60?text=Vitro" alt="Vitro">
+                    </div>
+                    <div class="supplier-logo">
+                        <img src="https://via.placeholder.com/120x60?text=Cardinal" alt="Cardinal">
+                    </div>
+                    <div class="supplier-logo">
+                        <img src="https://via.placeholder.com/120x60?text=Oldcastle" alt="Oldcastle">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICE AREAS -->
+        <section class="areas-section">
+            <div class="areas-inner">
+                <h3 class="areas-title">Service Areas</h3>
+                <div class="areas-list">
+                    <span class="area-item">Nampa</span>
+                    <span class="area-item">Boise</span>
+                    <span class="area-item">Meridian</span>
+                    <span class="area-item">Caldwell</span>
+                    <span class="area-item">Eagle</span>
+                    <span class="area-item">Kuna</span>
+                    <span class="area-item">Star</span>
+                    <span class="area-item">Middleton</span>
+                    <span class="area-item">Emmett</span>
+                    <span class="area-item">Garden City</span>
+                    <span class="area-item">Mountain Home</span>
+                    <span class="area-item">Parma</span>
+                    <span class="area-item">Wilder</span>
+                    <span class="area-item">Homedale</span>
+                    <span class="area-item">Marsing</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section class="contact-section" id="contact">
+            <div class="contact-info">
+                <h2>Get In Touch</h2>
+                <a href="tel:208-466-2476" class="contact-phone">208-466-2476</a>
+                <div class="contact-detail">
+                    <div class="contact-detail-label">Address</div>
+                    <div class="contact-detail-value">1408 2nd St S, Nampa, ID 83651</div>
+                </div>
+                <div class="contact-detail">
+                    <div class="contact-detail-label">Hours</div>
+                    <div class="contact-detail-value">Mon-Thu: 8am - 5pm</div>
+                    <div class="contact-detail-value">Fri: 8am - 4pm</div>
+                </div>
+            </div>
+            <div class="contact-form-section">
+                <h3 class="contact-form-title">Request a Free Quote</h3>
+                <form action="#" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Name</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="service">Service Needed</label>
+                        <select id="service" name="service" class="form-input">
+                            <option value="">Select a service...</option>
+                            <option value="shower">Shower Enclosures</option>
+                            <option value="windows">Windows</option>
+                            <option value="storefront">Commercial Storefronts</option>
+                            <option value="custom">Custom Glass</option>
+                            <option value="specialty">Specialty Glass</option>
+                            <option value="screens">Screens & Repairs</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="message">Project Details</label>
+                        <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Send Request</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <a href="#" class="footer-logo">
+                <img src="https://images.squarespace-cdn.com/content/v1/699f21be4d4eaf4e114bab5b/03d2b8ee-e8cf-40c2-9823-5cbb5d378e97/ChatGPT+Image+Feb+26%2C+2026%2C+10_16_29+AM.png" alt="Asqueta Glass">
+            </a>
+            <a href="tel:208-466-2476" class="footer-phone">208-466-2476</a>
+        </div>
+        <div class="footer-copy">
+            &copy; 2025 Asqueta Glass. All Rights Reserved. | 1408 2nd St S, Nampa, ID 83651
+        </div>
+    </footer>
+</body>
+</html>

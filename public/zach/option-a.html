@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asqueta Glass | Since 1965 | Nampa, Idaho</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --warm-white: #faf8f5;
+            --charcoal: #1a1a1a;
+            --copper: #b87333;
+            --warm-gray: #e8e4df;
+            --copper-light: rgba(184, 115, 51, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--warm-white);
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Fraunces', serif;
+            font-weight: 400;
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .header-contact {
+            text-align: right;
+        }
+
+        .header-phone {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            color: var(--charcoal);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+
+        .header-phone:hover {
+            color: var(--copper);
+        }
+
+        .header-hours {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            padding: 4rem 5% 8rem;
+            overflow: hidden;
+        }
+
+        .hero-year {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Fraunces', serif;
+            font-size: clamp(200px, 30vw, 400px);
+            font-weight: 300;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--warm-gray);
+            opacity: 0.6;
+            z-index: 0;
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 5%;
+        }
+
+        .hero-tagline {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--copper);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 400px;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background-color: var(--copper);
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            align-self: flex-start;
+        }
+
+        .hero-cta:hover {
+            background-color: #a06530;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Heritage Strip */
+        .heritage-strip {
+            background-color: var(--charcoal);
+            color: var(--warm-white);
+            padding: 3rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .heritage-stat {
+            text-align: center;
+        }
+
+        .heritage-number {
+            font-family: 'Fraunces', serif;
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--copper);
+        }
+
+        .heritage-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-top: 0.5rem;
+            opacity: 0.8;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 8rem 5%;
+            position: relative;
+        }
+
+        .section-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 5rem;
+            align-items: end;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+        }
+
+        .section-intro {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .service-card {
+            padding: 2.5rem;
+            background: white;
+            border: 1px solid var(--warm-gray);
+            position: relative;
+        }
+
+        .service-number {
+            font-family: 'Fraunces', serif;
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--warm-gray);
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .service-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Promotions Section */
+        .promotions {
+            background-color: var(--warm-gray);
+            padding: 8rem 5%;
+        }
+
+        .promotions-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .promotions-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .promo-card {
+            background: var(--warm-white);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-badge {
+            display: inline-block;
+            background: var(--copper);
+            color: white;
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+        }
+
+        .promo-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+        }
+
+        .promo-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .promo-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* About Section with Large Year */
+        .about {
+            padding: 10rem 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-year-bg {
+            position: absolute;
+            right: -5%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: 'Fraunces', serif;
+            font-size: clamp(150px, 25vw, 350px);
+            font-weight: 700;
+            color: var(--copper);
+            opacity: 0.08;
+            line-height: 1;
+            z-index: 0;
+        }
+
+        .about-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+
+        .about-tagline {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--copper);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .about-text {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Team Section */
+        .team {
+            background: var(--charcoal);
+            color: var(--warm-white);
+            padding: 8rem 5%;
+        }
+
+        .team-header {
+            margin-bottom: 5rem;
+        }
+
+        .team-tagline {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--copper);
+            margin-bottom: 1rem;
+        }
+
+        .team-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-photo {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            filter: grayscale(100%);
+            background: #333;
+        }
+
+        .team-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 0.25rem;
+        }
+
+        .team-role {
+            font-size: 0.85rem;
+            color: var(--copper);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Suppliers Section */
+        .suppliers {
+            padding: 6rem 5%;
+            background: var(--warm-white);
+        }
+
+        .suppliers-title {
+            text-align: center;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: #888;
+            margin-bottom: 3rem;
+        }
+
+        .suppliers-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 3rem 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .supplier-logo {
+            height: 40px;
+            opacity: 0.5;
+            filter: grayscale(100%);
+        }
+
+        .supplier-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            color: #888;
+            opacity: 0.7;
+        }
+
+        /* Service Areas */
+        .service-areas {
+            background: var(--warm-gray);
+            padding: 6rem 5%;
+        }
+
+        .areas-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .areas-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 400;
+        }
+
+        .areas-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .area-tag {
+            padding: 0.75rem 1.5rem;
+            background: var(--warm-white);
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+        }
+
+        .contact-info {
+            padding-right: 4rem;
+        }
+
+        .contact-tagline {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--copper);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-value {
+            font-family: 'Fraunces', serif;
+            font-size: 1.3rem;
+        }
+
+        .contact-value a {
+            color: var(--charcoal);
+            text-decoration: none;
+        }
+
+        .contact-value a:hover {
+            color: var(--copper);
+        }
+
+        .contact-form-wrapper {
+            background: var(--warm-gray);
+            padding: 3rem;
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            background: var(--warm-white);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--copper);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            background: var(--copper);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .form-submit:hover {
+            background: #a06530;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: var(--warm-white);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            height: 50px;
+            margin-bottom: 1rem;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-tagline {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 4rem;
+        }
+
+        .footer-column h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            color: var(--copper);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-column a {
+            color: var(--warm-white);
+            text-decoration: none;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .footer-column a:hover {
+            opacity: 1;
+            color: var(--copper);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        .footer-heritage {
+            font-family: 'Fraunces', serif;
+            font-size: 1rem;
+            opacity: 0.6;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+                padding: 3rem 5% 4rem;
+            }
+
+            .hero-content {
+                padding-left: 0;
+                order: 2;
+            }
+
+            .hero-image-wrapper {
+                order: 1;
+            }
+
+            .hero-year {
+                font-size: 180px;
+                top: 30%;
+            }
+
+            .section-header {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .promo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .contact-info {
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .header-contact {
+                text-align: center;
+            }
+
+            .hero-year {
+                font-size: 120px;
+            }
+
+            .heritage-strip {
+                justify-content: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .promo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .about-year-bg {
+                font-size: 120px;
+                right: -10%;
+            }
+
+            .suppliers-grid {
+                gap: 2rem 3rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-year {
+                font-size: 80px;
+            }
+
+            .heritage-strip {
+                flex-direction: column;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form-wrapper {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <img src="https://images.squarespace-cdn.com/content/v1/699f21be4d4eaf4e114bab5b/03d2b8ee-e8cf-40c2-9823-5cbb5d378e97/ChatGPT+Image+Feb+26%2C+2026%2C+10_16_29+AM.png" alt="Asqueta Glass Logo" class="logo">
+        <div class="header-contact">
+            <a href="tel:208-466-2476" class="header-phone">208-466-2476</a>
+            <div class="header-hours">Mon-Thu 8am-5pm, Fri 8am-4pm</div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-year">1965</div>
+        <div class="hero-content">
+            <p class="hero-tagline">Trusted Since 1965</p>
+            <h1 class="hero-title">Crafting Glass Solutions for Idaho's Treasure Valley</h1>
+            <p class="hero-description">For nearly six decades, Asqueta Glass has been the region's most trusted name in custom glass work, from elegant shower enclosures to commercial storefronts.</p>
+            <a href="#contact" class="hero-cta">Request a Quote</a>
+        </div>
+        <div class="hero-image-wrapper">
+            <img src="https://images.squarespace-cdn.com/content/v1/699f21be4d4eaf4e114bab5b/96d87818-0712-4576-bff3-ebe81c3c3d9b/Glass.png" alt="Asqueta Glass Work" class="hero-image">
+        </div>
+    </section>
+
+    <!-- Heritage Strip -->
+    <section class="heritage-strip">
+        <div class="heritage-stat">
+            <div class="heritage-number">59+</div>
+            <div class="heritage-label">Years in Business</div>
+        </div>
+        <div class="heritage-stat">
+            <div class="heritage-number">15</div>
+            <div class="heritage-label">Cities Served</div>
+        </div>
+        <div class="heritage-stat">
+            <div class="heritage-number">1000s</div>
+            <div class="heritage-label">Projects Completed</div>
+        </div>
+        <div class="heritage-stat">
+            <div class="heritage-number">4</div>
+            <div class="heritage-label">Expert Craftsmen</div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2 class="section-title">Our Expertise</h2>
+            <p class="section-intro">From residential renovations to commercial installations, we bring precision craftsmanship to every project. Our team combines decades of experience with modern techniques.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-number">01</span>
+                <h3 class="service-title">Shower Enclosures</h3>
+                <p class="service-description">Custom frameless and semi-frameless shower doors that transform your bathroom into a modern sanctuary.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-number">02</span>
+                <h3 class="service-title">Windows</h3>
+                <p class="service-description">Residential and commercial window installation, repair, and replacement with energy-efficient options.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-number">03</span>
+                <h3 class="service-title">Commercial Storefronts</h3>
+                <p class="service-description">Professional storefront glass solutions that make a lasting impression on your customers.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-number">04</span>
+                <h3 class="service-title">Custom Glass</h3>
+                <p class="service-description">Tabletops, mirrors, shelving, and specialty glass cut to your exact specifications.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-number">05</span>
+                <h3 class="service-title">Specialty Glass</h3>
+                <p class="service-description">Decorative, tempered, laminated, and patterned glass for unique applications.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-number">06</span>
+                <h3 class="service-title">Screens & Repairs</h3>
+                <p class="service-description">Window screen repair and replacement, plus emergency glass repair services.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotions Section -->
+    <section class="promotions">
+        <div class="promotions-header">
+            <h2 class="promotions-title">Current Offers</h2>
+        </div>
+        <div class="promo-grid">
+            <div class="promo-card">
+                <span class="promo-badge">Limited Time</span>
+                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&h=300&fit=crop" alt="Spring Sale" class="promo-image">
+                <h3 class="promo-title">Spring Sale</h3>
+                <p class="promo-description">Save 15% on all shower enclosure installations this spring. Transform your bathroom before summer arrives.</p>
+            </div>
+            <div class="promo-card">
+                <span class="promo-badge">Thank You</span>
+                <img src="https://images.unsplash.com/photo-1569982175971-d92b01cf8694?w=400&h=300&fit=crop" alt="Veterans Discount" class="promo-image">
+                <h3 class="promo-title">Veterans Discount</h3>
+                <p class="promo-description">We proudly offer 10% off all services to veterans and active military personnel. Thank you for your service.</p>
+            </div>
+            <div class="promo-card">
+                <span class="promo-badge">Welcome</span>
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=300&fit=crop" alt="New Customer" class="promo-image">
+                <h3 class="promo-title">New Customer Special</h3>
+                <p class="promo-description">First-time customers receive a free consultation and 10% off their first project with us.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-year-bg">1965</div>
+        <div class="about-content">
+            <p class="about-tagline">Our Story</p>
+            <h2 class="about-title">Nearly Six Decades of Excellence in Glass Craftsmanship</h2>
+            <p class="about-text">Since 1965, Asqueta Glass has been a cornerstone of Idaho's Treasure Valley. What started as a small family operation has grown into the region's most trusted glass company, serving residential and commercial clients across 15 cities.</p>
+            <p class="about-text">Our commitment to quality craftsmanship, fair pricing, and exceptional customer service has earned us a reputation that spans generations. When you work with Asqueta Glass, you're not just getting glass - you're getting peace of mind.</p>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <div class="team-header">
+            <p class="team-tagline">The People Behind the Glass</p>
+            <h2 class="team-title">Meet Our Team</h2>
+        </div>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face" alt="Mike" class="team-photo">
+                <h4 class="team-name">Mike</h4>
+                <p class="team-role">Master Glazier</p>
+            </div>
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face" alt="Zach" class="team-photo">
+                <h4 class="team-name">Zach</h4>
+                <p class="team-role">Operations Manager</p>
+            </div>
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=300&fit=crop&crop=face" alt="Riley" class="team-photo">
+                <h4 class="team-name">Riley</h4>
+                <p class="team-role">Lead Installer</p>
+            </div>
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=300&fit=crop&crop=face" alt="Aiyana Lopo" class="team-photo">
+                <h4 class="team-name">Aiyana Lopo</h4>
+                <p class="team-role">Customer Relations</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suppliers Section -->
+    <section class="suppliers">
+        <p class="suppliers-title">Trusted Partners & Suppliers</p>
+        <div class="suppliers-grid">
+            <span class="supplier-name">PPG Industries</span>
+            <span class="supplier-name">Guardian Glass</span>
+            <span class="supplier-name">Pilkington</span>
+            <span class="supplier-name">AGC Glass</span>
+            <span class="supplier-name">Vitro Glass</span>
+            <span class="supplier-name">Cardinal Glass</span>
+            <span class="supplier-name">Oldcastle BuildingEnvelope</span>
+        </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section class="service-areas">
+        <div class="areas-header">
+            <h2 class="areas-title">Proudly Serving the Treasure Valley</h2>
+        </div>
+        <div class="areas-grid">
+            <span class="area-tag">Nampa</span>
+            <span class="area-tag">Boise</span>
+            <span class="area-tag">Meridian</span>
+            <span class="area-tag">Caldwell</span>
+            <span class="area-tag">Eagle</span>
+            <span class="area-tag">Kuna</span>
+            <span class="area-tag">Star</span>
+            <span class="area-tag">Middleton</span>
+            <span class="area-tag">Garden City</span>
+            <span class="area-tag">Emmett</span>
+            <span class="area-tag">Mountain Home</span>
+            <span class="area-tag">Ontario</span>
+            <span class="area-tag">Payette</span>
+            <span class="area-tag">Homedale</span>
+            <span class="area-tag">Parma</span>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-info">
+            <p class="contact-tagline">Get in Touch</p>
+            <h2 class="contact-title">Let's Discuss Your Project</h2>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <p class="contact-label">Phone</p>
+                    <p class="contact-value"><a href="tel:208-466-2476">208-466-2476</a></p>
+                </div>
+                <div class="contact-item">
+                    <p class="contact-label">Address</p>
+                    <p class="contact-value">1408 2nd St S<br>Nampa, ID 83651</p>
+                </div>
+                <div class="contact-item">
+                    <p class="contact-label">Hours</p>
+                    <p class="contact-value">Mon-Thu 8am-5pm<br>Fri 8am-4pm</p>
+                </div>
+            </div>
+        </div>
+        <div class="contact-form-wrapper">
+            <h3 class="form-title">Request a Quote</h3>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label class="form-label" for="name">Full Name</label>
+                    <input type="text" id="name" name="name" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="service">Service Needed</label>
+                    <select id="service" name="service" class="form-select">
+                        <option value="">Select a service...</option>
+                        <option value="shower">Shower Enclosures</option>
+                        <option value="windows">Windows</option>
+                        <option value="storefront">Commercial Storefronts</option>
+                        <option value="custom">Custom Glass</option>
+                        <option value="specialty">Specialty Glass</option>
+                        <option value="screens">Screens & Repairs</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="message">Project Details</label>
+                    <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your project..."></textarea>
+                </div>
+                <button type="submit" class="form-submit">Submit Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="https://images.squarespace-cdn.com/content/v1/699f21be4d4eaf4e114bab5b/03d2b8ee-e8cf-40c2-9823-5cbb5d378e97/ChatGPT+Image+Feb+26%2C+2026%2C+10_16_29+AM.png" alt="Asqueta Glass" class="footer-logo">
+                <p class="footer-tagline">Idaho's trusted glass company since 1965. Serving the Treasure Valley with quality craftsmanship and exceptional service.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Shower Enclosures</a></li>
+                        <li><a href="#services">Windows</a></li>
+                        <li><a href="#services">Storefronts</a></li>
+                        <li><a href="#services">Custom Glass</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:208-466-2476">208-466-2476</a></li>
+                        <li><a href="#">1408 2nd St S</a></li>
+                        <li><a href="#">Nampa, ID 83651</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">&copy; 2024 Asqueta Glass. All rights reserved.</p>
+            <p class="footer-heritage">Proudly serving Idaho since 1965</p>
+        </div>
+    </footer>
+
+</body>
+</html>
