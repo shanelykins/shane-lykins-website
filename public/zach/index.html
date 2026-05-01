@@ -150,6 +150,8 @@
             border-radius: 6px;
             font-weight: 600;
             font-size: 0.85rem;
+            margin-left: auto;
+            margin-right: 0.5rem;
         }
 
         .mobile-toggle {
@@ -1112,6 +1114,10 @@
             width: 100%;
             padding: 1.125rem;
             font-size: 1rem;
+        }
+
+        .mobile-nav-cta .btn-primary {
+            color: white !important;
         }
 
         .mobile-nav-contact {
@@ -2203,16 +2209,28 @@
                     // Duplicate for infinite scroll effect
                     swiper.innerHTML = cardsHTML + cardsHTML;
 
-                    // Set up infinite scroll
+                    // Set up infinite scroll with debounce
                     const totalWidth = swiper.scrollWidth / 2;
+                    let isResetting = false;
+                    let scrollTimeout;
 
                     swiper.addEventListener('scroll', () => {
-                        if (swiper.scrollLeft >= totalWidth) {
-                            swiper.scrollLeft = swiper.scrollLeft - totalWidth;
-                        } else if (swiper.scrollLeft <= 0) {
-                            swiper.scrollLeft = totalWidth;
-                        }
+                        if (isResetting) return;
+
+                        clearTimeout(scrollTimeout);
+                        scrollTimeout = setTimeout(() => {
+                            if (swiper.scrollLeft >= totalWidth - 50) {
+                                isResetting = true;
+                                swiper.style.scrollBehavior = 'auto';
+                                swiper.scrollLeft = swiper.scrollLeft - totalWidth;
+                                swiper.style.scrollBehavior = '';
+                                setTimeout(() => { isResetting = false; }, 100);
+                            }
+                        }, 50);
                     });
+
+                    // Start in the middle of first set
+                    swiper.scrollLeft = 1;
                 }
             } catch (error) {
                 console.error('Error loading projects:', error);
