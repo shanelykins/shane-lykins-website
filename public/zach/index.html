@@ -463,8 +463,6 @@
             display: flex;
             gap: 1.25rem;
             overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
             padding: 1rem 0 2rem;
             margin: 0 -2rem;
@@ -492,7 +490,6 @@
 
         .project-card {
             flex: 0 0 300px;
-            scroll-snap-align: start;
             position: relative;
             border-radius: 12px;
             overflow: hidden;
@@ -2195,12 +2192,27 @@
                 const swiper = document.getElementById('projectsSwiper');
 
                 if (data.projects && data.projects.length > 0) {
-                    swiper.innerHTML = data.projects.map(project => `
+                    // Create cards HTML
+                    const cardsHTML = data.projects.map(project => `
                         <div class="project-card">
                             <img src="${project.image}" alt="${project.title}" loading="lazy">
                             <div class="project-card-overlay"><span>${project.title}</span></div>
                         </div>
                     `).join('');
+
+                    // Duplicate for infinite scroll effect
+                    swiper.innerHTML = cardsHTML + cardsHTML;
+
+                    // Set up infinite scroll
+                    const totalWidth = swiper.scrollWidth / 2;
+
+                    swiper.addEventListener('scroll', () => {
+                        if (swiper.scrollLeft >= totalWidth) {
+                            swiper.scrollLeft = swiper.scrollLeft - totalWidth;
+                        } else if (swiper.scrollLeft <= 0) {
+                            swiper.scrollLeft = totalWidth;
+                        }
+                    });
                 }
             } catch (error) {
                 console.error('Error loading projects:', error);
