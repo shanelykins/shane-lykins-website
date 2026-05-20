@@ -5,6 +5,7 @@ import { Route, Switch } from "wouter";
 import Board from "@/pages/board";
 import Resume from "@/pages/resume";
 import Home from "@/pages/home";
+import Portfolio from "@/pages/portfolio";
 import { queryClient } from "@/lib/queryClient";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <TooltipProvider>
         <Toaster />
         <Switch>
+          <Route path="/portfolio" component={Portfolio} />
           <Route path="/resume" component={Resume} />
           <Route path="/board" component={Board} />
           <Route path="/" component={Home} />
