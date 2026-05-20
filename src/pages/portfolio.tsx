@@ -14,6 +14,34 @@ interface PortfolioProject {
 
 const portfolioProjects: PortfolioProject[] = [
   {
+    title: "Bigfoot",
+    description: "Led award-winning brand identity and product design for Bigfoot, a local discovery platform helping users find experiences in their city. Designed the core product experience including the discover feed, interactive maps, event listings, and curated collections.",
+    images: [
+      "/portfolio/bigfoot-1.png",
+      "/portfolio/bigfoot-2.png",
+      "/portfolio/bigfoot-3.png",
+      "/portfolio/bigfoot-4.png"
+    ],
+    tags: ["Brand Identity", "Product Design", "UX/UI", "Award-Winning"],
+    role: "Co-Founder & Head of Product",
+    year: "2023-2024",
+    link: "https://bigfoot.com"
+  },
+  {
+    title: "Novi",
+    description: "Building the world's best startup ideation platform. Novi helps founders decide what's worth building before they write code, quit their job, or waste six months. Features AI-powered idea analysis with market sizing, timing assessment, and defensibility scoring.",
+    images: [
+      "/portfolio/novi-1.png",
+      "/portfolio/novi-2.png",
+      "/portfolio/novi-3.png",
+      "/portfolio/novi-4.png"
+    ],
+    tags: ["AI Product", "SaaS", "Startup Tools", "Full-Stack"],
+    role: "Co-Founder",
+    year: "2024-2025",
+    link: "https://usenovi.com"
+  },
+  {
     title: "Rec.us Enterprise Platform",
     description: "Reimagined the Rec.us platform with an enterprise focus, creating a comprehensive design system that speaks to business clients while maintaining the brand's core values. The project included a new homepage design and a detailed features section that effectively communicates complex platform capabilities through visual storytelling.",
     images: [
