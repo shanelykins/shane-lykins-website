@@ -25,7 +25,20 @@ const portfolioProjects: PortfolioProject[] = [
     tags: ["Brand Identity", "Product Design", "UX/UI", "Award-Winning"],
     role: "Co-Founder & Head of Product",
     year: "2023-2024",
-    link: "https://bigfoot.com"
+    link: "https://thebigfoot.com"
+  },
+  {
+    title: "Growthmaxxing",
+    description: "AI-powered user acquisition on autopilot. Growthmaxxing uses AI agents to create content inspired by what's already working and auto-posts to social media. Features include an influencer studio with AI-generated creators, content dashboard, and automated posting workflows.",
+    images: [
+      "/portfolio/growthmaxxing-1.png",
+      "/portfolio/growthmaxxing-2.png",
+      "/portfolio/growthmaxxing-3.png"
+    ],
+    tags: ["AI Product", "Growth Tools", "Content Automation", "SaaS"],
+    role: "Founder",
+    year: "2025",
+    link: "https://growthmaxxing.com"
   },
   {
     title: "Novi",
